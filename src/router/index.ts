@@ -1,24 +1,17 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue' 
-import Login from '../views/Login.vue'
-import Welcome from '../views/Welcome.vue';
-
+import Home from '../views/About.vue'  
+import Cats from '../views/Cats.vue';
 Vue.use(VueRouter)
 
   const routes: Array<RouteConfig> = [
    // home redirection
-  { path: '/', redirect: '/Login' },
+  { path: '/', redirect: '/Cats' },
   {
     path: '/',
     name: 'Home',
     component: Home
-      },
-      {
-        path: '/Welcome',
-        name: 'Welcome',
-        component: Welcome
-          },
+      }, 
 
   {
     path: '/about',
@@ -27,13 +20,11 @@ Vue.use(VueRouter)
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-      },     
-
-      // auth routes
+      },      
       {
-        path: '/login',
-        component: Login,
-        name: 'login',
+        path: '/Cats',
+        component: Cats,
+        name: 'Cats',
         meta: { allowUnauthenticatedAccess: true }
       },
 ]

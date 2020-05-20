@@ -15,6 +15,23 @@ export function handleApiError (error: any): string {
 }
 
 
+export function login (uid: string, pwd: string, baseUrl: string): AuthenticationResult { 
+    
+    //hardcoded
+    const userLogged= {  FirstName: 'test',   
+          Email: 'admin@s.com', Name: 'test',
+              LastName: 'singh',  
+              Id: 's@s.com'  };
+  
+      if(uid == 'test'){
+          
+          const userRes = { success: true, user: userLogged,message :'success', timestamp: moment()};
+          return userRes;
+          }
+          
+          const userRes2 = { success: false, user: userLogged,message :'failed', timestamp: moment()};
+          return  userRes2
+  }
 
 
 export function authenticate (uid: string, pwd: string, baseUrl: string): Promise<AuthenticationResult> { 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\work\\Personal\\funwizard\\BackEnd.Tests\\BackEnd.Tests.csproj": {}
+    "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd.Tests\\BackEnd.Tests.csproj": {}
   },
   "projects": {
-    "C:\\work\\Personal\\funwizard\\BackEnd.Tests\\BackEnd.Tests.csproj": {
+    "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd.Tests\\BackEnd.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\work\\Personal\\funwizard\\BackEnd.Tests\\BackEnd.Tests.csproj",
+        "projectUniqueName": "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd.Tests\\BackEnd.Tests.csproj",
         "projectName": "BackEnd.Tests",
-        "projectPath": "C:\\work\\Personal\\funwizard\\BackEnd.Tests\\BackEnd.Tests.csproj",
+        "projectPath": "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd.Tests\\BackEnd.Tests.csproj",
         "packagesPath": "C:\\Users\\sande\\.nuget\\packages\\",
-        "outputPath": "C:\\work\\Personal\\funwizard\\BackEnd.Tests\\obj\\",
+        "outputPath": "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sande\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\work\\Personal\\funwizard\\BackEnd\\BackEnd.csproj": {
-                "projectPath": "C:\\work\\Personal\\funwizard\\BackEnd\\BackEnd.csproj"
+              "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd\\BackEnd.csproj": {
+                "projectPath": "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd\\BackEnd.csproj"
               }
             }
           }
@@ -49,6 +49,10 @@
             "MSTest.TestFramework": {
               "target": "Package",
               "version": "[2.1.0, )"
+            },
+            "Microsoft.AspNet.WebApi.Core": {
+              "target": "Package",
+              "version": "[5.2.7, )"
             },
             "Microsoft.Extensions.Options": {
               "target": "Package",
@@ -78,6 +82,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -86,14 +93,14 @@
         }
       }
     },
-    "C:\\work\\Personal\\funwizard\\BackEnd\\BackEnd.csproj": {
+    "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\work\\Personal\\funwizard\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "C:\\work\\Personal\\funwizard\\BackEnd\\BackEnd.csproj",
+        "projectPath": "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd\\BackEnd.csproj",
         "packagesPath": "C:\\Users\\sande\\.nuget\\packages\\",
-        "outputPath": "C:\\work\\Personal\\funwizard\\BackEnd\\obj\\",
+        "outputPath": "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sande\\AppData\\Roaming\\NuGet\\NuGet.Config",

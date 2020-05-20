@@ -62,14 +62,13 @@ namespace BackEnd
             {
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Test API assessment",
+                    Title = "AGL Cats API assessment",
                     Version = "v1",
                     Description = "HTTP API"
                 });
-                options.ExampleFilters();
+               // options.ExampleFilters();
             });
-
-            services.AddSwaggerExamplesFromAssemblyOf<FacebookExample>(); 
+ 
            
             services.Configure<ConfigSettings>(Configuration.GetSection("Settings"));
 
@@ -136,11 +135,13 @@ namespace BackEnd
                 services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
                 //register http services 
-                //commented as handling by injection for testing with facebook
-                services.AddHttpClient<IFacebook, FacebookSvc>();
+                //commented as handling by injection for testing with facebook 
                 //.AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
                 // .AddPolicyHandler(GetRetryPolicy());
                 // .AddPolicyHandler(GetCircuitBreakerPolicy()); 
+
+                 services.AddHttpClient<ICats, Cats>();
+
 
             }
             catch (Exception e) { throw new Exception("Error1 " + e.Message, e); }

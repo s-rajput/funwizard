@@ -3,7 +3,7 @@
         <div class='container-fluid'>
             <div class='navbar-header'>
                 <router-link class='navbar-brand' :title='strwLink' to='/'>
-                    The best fun wizard  
+                    AGL Test wizard  
                 </router-link>
             </div>
            
@@ -22,11 +22,7 @@
     import {User} from '@/models/user' 
 
     export default Vue.extend({
-        data () {
-            return {
-                showAssignment: false
-            }
-        },
+       
         computed: {
             user (): User | undefined { return this.$store.getters.user },
             isAuthenticated (): boolean { return this.$store.getters.isAuthenticated || false }             

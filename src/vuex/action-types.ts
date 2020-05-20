@@ -7,3 +7,6 @@ export const SHUTDOWN = 'SHUTDOWN' // window.onunload event, use to write to loc
 export const LOG_IN = 'LOG_IN'
 export const LOG_IN_HARDCODED = 'LOG_IN_HARDCODED' 
 export const LOG_OUT = 'LOG_OUT'
+
+
+export const GET_CATS = 'GET_CATS' 

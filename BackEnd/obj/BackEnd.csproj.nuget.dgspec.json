@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\work\\Personal\\funwizard\\BackEnd\\BackEnd.csproj": {}
+    "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd\\BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\work\\Personal\\funwizard\\BackEnd\\BackEnd.csproj": {
+    "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\work\\Personal\\funwizard\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "C:\\work\\Personal\\funwizard\\BackEnd\\BackEnd.csproj",
+        "projectPath": "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd\\BackEnd.csproj",
         "packagesPath": "C:\\Users\\sande\\.nuget\\packages\\",
-        "outputPath": "C:\\work\\Personal\\funwizard\\BackEnd\\obj\\",
+        "outputPath": "C:\\work\\Personal\\Assessment\\AglAssessment\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sande\\AppData\\Roaming\\NuGet\\NuGet.Config",

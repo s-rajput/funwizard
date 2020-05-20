@@ -13,16 +13,7 @@ export enum AccessLevel {
     Consultant = 'Consultant',
     Supervisor = 'Supervisor',
     Admin = 'Admin'
-}
-
-export interface FacebookResult {
-   FirstName: string;
-   LastName: string;
-   Email: string;
-   Id: string;
-   Name: string;
-}
-
+} 
 export interface AuthenticationResult {
     success: boolean;
     message: string;

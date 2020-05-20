@@ -16,136 +16,90 @@ namespace BackEnd.Tests
     [TestClass]
     public class BackEndTests
     {
- 
-        
+
         [TestMethod]
-        public void Test_GetLargestNumber()
+        public async Task Test_LiveHttpClient_Pass()
         {
 
-            //assemble
-            var testArray = new int[] { 3, 5, 6, 78 };
-            var mockFaceBook = Substitute.For<IFacebook>();
-            var mockService = Substitute.For<BackEndSvc>(mockFaceBook);
+            //assemble 
+            string[] ExpectedCatsFemale = { "Garfield", "Simba", "Tabby" };
+            string[] ExpectedCatsMale = { "Garfield", "Jim", "Max", "Tom" };
+            //mock configuration
+            var configMock = Substitute.For<IOptions<ConfigSettings>>();
+            configMock.Value.Returns(new ConfigSettings
+            {
+                CatsBaseURL = "http://agl-developer-test.azurewebsites.net/people.json"
+            });
+            //mock service
+            var mockService = Substitute.For<Cats>(new HttpClient(), configMock);
+
             //act
-            var Result = mockService.GetLargestNumber(testArray);
+            var Result = await mockService.GetCats();
 
             //assert
             Assert.IsNotNull(Result);
-            Assert.AreEqual(78,Result);
+            Assert.AreEqual(Result.Count, 2);
+            Assert.IsTrue(Result.Where(x => x.Gender == "Male").First().Names.Any(x => ExpectedCatsMale.Contains(x)));
+            Assert.IsTrue(Result.Where(x => x.Gender == "Female").First().Names.Any(x => ExpectedCatsFemale.Contains(x)));
             Console.WriteLine(Result);
         }
 
         [TestMethod]
-        public void Test_GetSmallestNumber()
+        public async Task Test_LiveHttpClient_InvalidURL_fail()
         {
 
-            //assemble
-            var testArray = new int[] { 3, 5, 6, 78 };
-            var mockFaceBook = Substitute.For<IFacebook>();
-            var mockService = Substitute.For<BackEndSvc>(mockFaceBook);
-             
-
+            //assemble 
+            //mock configuration
+            var configMock = Substitute.For<IOptions<ConfigSettings>>();
+            configMock.Value.Returns(new ConfigSettings
+            {
+                CatsBaseURL = "http://invalidurl.net/people.json"
+            });
+            //mock service
+            var mockService = Substitute.For<Cats>(new HttpClient(), configMock);
             //act
-            var Result = mockService.GetSmallestNumber(testArray);
+            var Result = await mockService.GetCats();
 
-            //assert
-            Assert.IsNotNull(Result);
-            Assert.AreEqual(3, Result);
-        }
-
-        [TestMethod]
-        public void Test_AnagramCheck()
-        {
-
-            //assemble
-            var FirstString = "CAT";
-            var SecondString = "ACT";
-            var mockFaceBook = Substitute.For<IFacebook>();
-            var mockService = Substitute.For<BackEndSvc>(mockFaceBook);
-
-            //act
-            var Result = mockService.AnagramCheck(FirstString,SecondString);
-
-            //assert
-            Assert.IsNotNull(Result);
-            Assert.AreEqual(true, Result);
-        }
-
-        [TestMethod]
-        public void Test_IsValidAUMobileNumber()
-        {
-
-            //assemble
-            var ValidNumber1 =  "0418160502";
-            var InValidNumber1 =  "041816050277";
-            var ValidNumber2 = "0061418160502";
-            var InValidNumber2 = "0289768956";
-            var mockFaceBook = Substitute.For<IFacebook>();
-            var mockService = Substitute.For<BackEndSvc>(mockFaceBook);
-
-            //act
-            var ValidResult1 = mockService.IsValidAUMobileNumber(ValidNumber1);
-            var ValidResult2 = mockService.IsValidAUMobileNumber(ValidNumber2);
-            var InValidResult1 = mockService.IsValidAUMobileNumber(InValidNumber1);
-            var InValidResult2 = mockService.IsValidAUMobileNumber(InValidNumber2);
             //assert 
-            Assert.AreEqual(true, ValidResult1);
-            Assert.AreEqual(true, ValidResult2);
-            Assert.AreEqual(false, InValidResult1);
-            Assert.AreEqual(false, InValidResult2);
+             
+            Assert.IsNull(Result); 
+            Console.WriteLine(Result);
         }
+
 
         [TestMethod]
-        public void Test_RemoveDupesPreferred()
+        public async Task Test_MockHttpClient()
         {
 
-            //assemble
-            var Givenstring = "oneoneoneone";
-            var mockFaceBook = Substitute.For<IFacebook>();
-            var mockService = Substitute.For<BackEndSvc>(mockFaceBook);
-
+            //assemble 
+            //mock configuration
+            var configMock = Substitute.For<IOptions<ConfigSettings>>(); 
+            configMock.Value.Returns(new ConfigSettings
+            {
+                 CatsBaseURL = "http://agl-developer-test.azurewebsites.net/people.json"
+            });
+            //mock service
+            var mockService = Substitute.For<Cats>(MockedHttpClient(), configMock);
             //act
-            var Result = mockService.RemoveDupesPreferred(Givenstring);
+            var Result = await mockService.GetCats();
 
             //assert
+            //assert 
+            string[] MockedCatsMale = { "Sandeep", "Rob"};
             Assert.IsNotNull(Result);
-            Assert.AreEqual("one", Result);
+            Assert.AreEqual(Result.Count,1);  //fake moked response with only males
+            Assert.AreEqual(Result[0].Gender, "Male"); 
+            Console.WriteLine(Result);
         }
 
-        [TestMethod]
-        public void Test_RemoveDupesTwo()
+       
+        private HttpClient MockedHttpClient()
         {
-
-            //assemble
-            var Givenstring = "oneoneoneone";
-            var mockFaceBook = Substitute.For<IFacebook>();
-            var mockService = Substitute.For<BackEndSvc>(mockFaceBook);
-
-            //act
-            var Result = mockService.RemoveDupesTwo(Givenstring);
-
-            //assert
-            Assert.IsNotNull(Result);
-            Assert.AreEqual("one", Result);
+            var MockedResponse = "[{'name':'Bob','gender':'Male','age':23,'pets':[{'name':'Sandeep','type':'Cat'},{'name':'Rob','type':'Cat'}]}]";
+            var messageHandler = new MockHttpMessageHandler(MockedResponse, HttpStatusCode.OK);
+             return new HttpClient(messageHandler); 
         }
-
-        [TestMethod]
-        public void Test_RemoveDupesLeastPreffered()
-        {
-
-            //assemble
-            var Givenstring = "oneoneoneone";
-            var mockFaceBook = Substitute.For<IFacebook>();
-            var mockService = Substitute.For<BackEndSvc>(mockFaceBook);
-
-            //act
-            var Result = mockService.RemoveDupesLeastPreffered(Givenstring);
-
-            //assert
-            Assert.IsNotNull(Result);
-            Assert.AreEqual("one", Result);
-        }
-      
+  
     }
 
     public class MockHttpMessageHandler : HttpMessageHandler
