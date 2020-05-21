@@ -1,4 +1,4 @@
-# funwizard
+# Sample website to demonstrate authentication via Facebook in VueJS with Vuex and .Net back-end
 
 ## Project setup
 ```
